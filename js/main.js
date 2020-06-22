@@ -23,8 +23,8 @@ var getRandomArrAray = function (arr) {
 };
 
 
-var element = document.querySelector('.map');
-var mapWidth = element.offsetWidth;
+var map = document.querySelector('.map');
+var mapWidth = map.offsetWidth;
 
 
 var generateObject = function (i) {
@@ -37,8 +37,8 @@ var generateObject = function (i) {
       'address': getRandomNumber(0, mapWidth) + ', ' + getRandomNumber(130, 630),
       'price': 'стоимость',
       'type': getRandomArrValue(types),
-      'rooms': 'число комнат',
-      'guests': 'число, количество гостей, которое можно разместить',
+      'rooms': 0,
+      'guests': 0,
       'checkin': getRandomArrValue(times),
       'checkout': getRandomArrValue(times),
       'features': getRandomArrAray(feature),
@@ -63,7 +63,7 @@ var getGenerateObjectAll = function () {
 
 var offersArray = getGenerateObjectAll();
 
-element.classList.remove('map--faded');
+map.classList.remove('map--faded');
 
 var mapMarkElement = document.querySelector('.map__pins');
 var mapMarkList = document.querySelector('#pin')
