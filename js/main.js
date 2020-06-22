@@ -74,11 +74,13 @@ var mapPinsAll = document.createDocumentFragment();
 
 for (var i = 0; i < offersArray.length; i++) {
   var markElement = mapMarkList.cloneNode(true);
-  markElement.style.left = (offersArray[i].location.x) + (PIN_WIDTH / 2) + 'px';
-  markElement.style.top = (offersArray[i].location.y) + PIN_HEIGHT + 'px';
+  var offersIndex = offersArray[i];
+  markElement.style.left = (offersIndex.location.x) + (PIN_WIDTH / 2) + 'px';
+  markElement.style.top = (offersIndex.location.y) + PIN_HEIGHT + 'px';
 
   var img = markElement.querySelector('img');
-  img.src = offersArray[i].author.avatar;
+  img.src = offersIndex.author.avatar;
+  img.alt = 'Аватар';
 
   mapPinsAll.appendChild(markElement);
 }
