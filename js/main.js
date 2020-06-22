@@ -5,6 +5,7 @@ var feature = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'condition
 var photos = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
 var PIN_WIDTH = 50;
 var PIN_HEIGHT = 70;
+var OBJECT_LENGTH = 8;
 
 // опредиление случайного числа в промежутке
 var getRandomNumber = function (min, max) {
@@ -54,11 +55,11 @@ var generateObject = function (i) {
 
 
 var getGenerateObjectAll = function () {
-  var arrayOfEightObjects = [];
-  for (var i = 0; i < 8; i++) {
-    arrayOfEightObjects.push(generateObject(i));
+  var arrayAllObjects = [];
+  for (var i = 0; i < OBJECT_LENGTH; i++) {
+    arrayAllObjects.push(generateObject(i));
   }
-  return arrayOfEightObjects;
+  return arrayAllObjects;
 };
 
 var offersArray = getGenerateObjectAll();
