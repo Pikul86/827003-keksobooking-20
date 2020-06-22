@@ -1,7 +1,7 @@
 'use strict';
-var types = ['palace', 'flat', 'house', 'bungalo'];
-var times = ['12:00', '13:00', '14:00'];
-var feature = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
+var TYPES = ['palace', 'flat', 'house', 'bungalo'];
+var TIMES = ['12:00', '13:00', '14:00'];
+var FEATURE = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
 var photos = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
 var PIN_WIDTH = 50;
 var PIN_HEIGHT = 70;
@@ -37,12 +37,12 @@ var generateObject = function (i) {
       'title': 'заголовок',
       'address': getRandomNumber(0, mapWidth) + ', ' + getRandomNumber(130, 630),
       'price': 'стоимость',
-      'type': getRandomArrValue(types),
+      'type': getRandomArrValue(TYPES),
       'rooms': 0,
       'guests': 0,
-      'checkin': getRandomArrValue(times),
-      'checkout': getRandomArrValue(times),
-      'features': getRandomArrAray(feature),
+      'checkin': getRandomArrValue(TIMES),
+      'checkout': getRandomArrValue(TIMES),
+      'features': getRandomArrAray(FEATURE),
       'description': 'строка с описанием',
       'photos': getRandomArrAray(photos)
     },
