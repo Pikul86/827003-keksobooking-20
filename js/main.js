@@ -90,7 +90,7 @@ mapMarkElement.appendChild(mapPinsAll);
 // Отключение строк формы
 var mapFilters = document.querySelectorAll('.map__filter');
 
-for (var i = 0; i < mapFilters.length; i++) {
+for (i = 0; i < mapFilters.length; i++) {
   mapFilters[i].setAttribute('disabled', 'disabled');
 }
 
@@ -100,7 +100,7 @@ formFieldsetHeader.setAttribute('disabled', 'disabled');
 
 var formFieldset = document.querySelectorAll('.ad-form__element');
 
-for (var i = 0; i < formFieldset.length; i++) {
+for (i = 0; i < formFieldset.length; i++) {
   formFieldset[i].setAttribute('disabled', 'disabled');
 }
 
@@ -113,13 +113,13 @@ address.value = getRandomNumber(0, mapWidth) + ', ' + getRandomNumber(130, 630);
 // отключение при нажатии мыши
 mapPinMain.addEventListener('mousedown', function (evt) {
   if (evt.button === MOUSE_BUTTON) {
-    for (var i = 0; i < mapFilters.length; i++) {
+    for (i = 0; i < mapFilters.length; i++) {
       mapFilters[i].removeAttribute('disabled');
     }
 
     document.querySelector('.ad-form-header').removeAttribute('disabled');
 
-    for (var i = 0; i < formFieldset.length; i++) {
+    for (i = 0; i < formFieldset.length; i++) {
       formFieldset[i].removeAttribute('disabled');
     }
 
@@ -129,13 +129,13 @@ mapPinMain.addEventListener('mousedown', function (evt) {
 
 mapPinMain.addEventListener('keydown', function (evt) {
   if (evt.key === 'Enter') {
-    for (var i = 0; i < mapFilters.length; i++) {
+    for (i = 0; i < mapFilters.length; i++) {
       mapFilters[i].removeAttribute('disabled');
     }
 
     document.querySelector('.ad-form-header').removeAttribute('disabled');
 
-    for (var i = 0; i < formFieldset.length; i++) {
+    for (i = 0; i < formFieldset.length; i++) {
       formFieldset[i].removeAttribute('disabled');
     }
   }
