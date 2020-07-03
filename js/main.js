@@ -6,6 +6,7 @@ var PHOTOS = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.g
 var PIN_WIDTH = 50;
 var PIN_HEIGHT = 70;
 var OBJECT_LENGTH = 8;
+var MOUSE_BUTTON = 0;
 
 // опредиление случайного числа в промежутке
 var getRandomNumber = function (min, max) {
@@ -64,8 +65,6 @@ var getGenerateObjectAll = function () {
 
 var offersArray = getGenerateObjectAll();
 
-map.classList.remove('map--faded');
-
 var mapMarkElement = document.querySelector('.map__pins');
 var mapMarkList = document.querySelector('#pin')
   .content
@@ -87,3 +86,83 @@ for (var i = 0; i < offersArray.length; i++) {
 }
 
 mapMarkElement.appendChild(mapPinsAll);
+
+// Отключение строк формы
+var mapFilters = document.querySelectorAll('.map__filter');
+
+for (var i = 0; i < mapFilters.length; i++) {
+  mapFilters[i].setAttribute('disabled', 'disabled');
+}
+
+
+var formFieldsetHeader = document.querySelector('.ad-form-header');
+formFieldsetHeader.setAttribute('disabled', 'disabled');
+
+var formFieldset = document.querySelectorAll('.ad-form__element');
+
+for (var i = 0; i < formFieldset.length; i++) {
+  formFieldset[i].setAttribute('disabled', 'disabled');
+}
+
+
+var mapPinMain = document.querySelector('.map__pin--main');
+
+var address = document.querySelector('#address');
+address.value = getRandomNumber(0, mapWidth) + ', ' + getRandomNumber(130, 630);
+
+// отключение при нажатии мыши
+mapPinMain.addEventListener('mousedown', function (evt) {
+  if (evt.button === MOUSE_BUTTON) {
+    for (var i = 0; i < mapFilters.length; i++) {
+      mapFilters[i].removeAttribute('disabled');
+    }
+
+    document.querySelector('.ad-form-header').removeAttribute('disabled');
+
+    for (var i = 0; i < formFieldset.length; i++) {
+      formFieldset[i].removeAttribute('disabled');
+    }
+
+    map.classList.remove('map--faded');
+  }
+});
+
+mapPinMain.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Enter') {
+    for (var i = 0; i < mapFilters.length; i++) {
+      mapFilters[i].removeAttribute('disabled');
+    }
+
+    document.querySelector('.ad-form-header').removeAttribute('disabled');
+
+    for (var i = 0; i < formFieldset.length; i++) {
+      formFieldset[i].removeAttribute('disabled');
+    }
+  }
+
+  map.classList.remove('map--faded');
+});
+
+var room = document.querySelector('#room_number');
+var capacity = document.querySelector('#capacity');
+
+
+capacity.addEventListener('change', function () {
+  var roomValue = Number(room.value);
+  var capacityValue = Number(capacity.value);
+  if (capacityValue < roomValue) {
+    capacity.setCustomValidity('Не подходит для гостей');
+  } else {
+    capacity.setCustomValidity('');
+  }
+});
+
+room.addEventListener('change', function () {
+  var roomValue = Number(room.value);
+  var capacityValue = Number(capacity.value);
+  if (roomValue > capacityValue) {
+    room.setCustomValidity('Не подходит для гостей');
+  } else {
+    room.setCustomValidity('');
+  }
+});
